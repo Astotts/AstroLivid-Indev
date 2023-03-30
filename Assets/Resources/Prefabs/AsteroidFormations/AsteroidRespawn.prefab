@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1991638026465407854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6749239321850066226}
+  - component: {fileID: 8836465789086902091}
+  m_Layer: 0
+  m_Name: AsteroidRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6749239321850066226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991638026465407854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8836465789086902091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991638026465407854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191f6c9f6fba74740bcc9baeee2ae769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 15
+  smallAsteroidArray:
+  - {fileID: 3836551168845161316, guid: b041e6abc6cd4f44bb645c34bfee4b49, type: 3}
+  - {fileID: 1952324658075243445, guid: d3431e5eeb39d4044b5f18f0a9da04b3, type: 3}
+  - {fileID: 6991462659419577303, guid: 0ec1cda5f32d0f846be262e1fb73a842, type: 3}
+  - {fileID: 6222145404347525499, guid: c9fbe0e397750c04a9348e20b6476b7d, type: 3}
+  - {fileID: 4631493737310052439, guid: bc1608ea4a6dd84499de09c9550f6d6a, type: 3}
+  - {fileID: 1806086742341123492, guid: 3f0a102a719710f4ba5050edd7019344, type: 3}
+  - {fileID: 4424373323771661558, guid: 86c16561fb41d9d4aa9013d7bd8646eb, type: 3}
+  - {fileID: 2731507111376512695, guid: 4fd1a35b049dec548a26b2912f047103, type: 3}
+  mediumAsteroidArray:
+  - {fileID: 3946408486732622128, guid: 12b8888764f866543b48b50330f5fa34, type: 3}
+  - {fileID: 6823906234163905078, guid: 58d2bc6823155884795fe4f753fd632d, type: 3}
+  - {fileID: 6206368304748021428, guid: 6c26c34c6b83e834ea4c2173931bc48b, type: 3}
+  - {fileID: 1161123860501182953, guid: 810389e340a26a3469b37c5c140d1788, type: 3}
+  - {fileID: 3082240658384185234, guid: 570726d971aac6145a1f1abb09371494, type: 3}
+  - {fileID: 8607747316919037116, guid: 75b11f0276ff18047808049ce6d14d40, type: 3}
+  - {fileID: 2070460703573165077, guid: 94ca81106b9d81440a83d4e12b91eb9f, type: 3}
+  - {fileID: 8382207274836797379, guid: d692c8c0cc081d743b9ae6cc217df761, type: 3}
+  largeAsteroidArray:
+  - {fileID: 8507974552721672677, guid: 33ba4ad390822404a930ee044d250461, type: 3}
+  - {fileID: 7195599395150717492, guid: e226348f4c219e74193c5aae0b7892cf, type: 3}
+  - {fileID: 2419194987664450510, guid: 353aa44bc1849b640b74682a7a850a1d, type: 3}
+  - {fileID: 6447469901248692013, guid: a69e65a7d79b11a4ab9b2616960d86ba, type: 3}
+  - {fileID: 2163857285751640081, guid: 27de212f10fc19d4eb90a566f9b14ee8, type: 3}
+  - {fileID: 8835036201186175862, guid: f58f9f7734ca3a548b6cf91562626697, type: 3}
+  - {fileID: 3213604120490976131, guid: 0cbf7b8b36d9f054a8f3869c50bef2c0, type: 3}
+  - {fileID: 8917588135207876750, guid: b1fb8b07895a3f7418f370093d51d3d7, type: 3}
+  checkColliderResetTime: 30
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048

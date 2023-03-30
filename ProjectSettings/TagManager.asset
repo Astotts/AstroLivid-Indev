@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - TeamOne
+  - TeamTwo
+  - TeamThree
+  - TeamFour
+  - TeamFive
+  - TeamSix
+  - TeamSeven
+  - TeamEight
+  - Asteroid
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Instantiated
+  - No-Collision
+  - Impassible
+  - RoughTerrain
+  - TeamOneShips
+  - TeamOneProjectiles
+  - TeamOneBuildings
+  - TeamTwoShips
+  - TeamTwoProjectiles
+  - TeamTwoBuildings
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BloomEffect
+    uniqueID: 587505439
+    locked: 0
