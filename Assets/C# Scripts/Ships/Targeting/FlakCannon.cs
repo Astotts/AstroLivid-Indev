@@ -9,8 +9,14 @@ public class FlakCannon : WeaponClass
     private float firingElapsed;
     [SerializeField] private float duration;
 
-    [SerializeField] float rotateSpeed = 400f;
     [SerializeField] bool rotationClamped;
+
+    public bool startAnim = false;
+    public bool stopAnim = false;
+
+    [SerializeField] Animator shellEjection;
+    [SerializeField] ParticleSystem ejectedShell;
+
 
     
 
@@ -18,6 +24,17 @@ public class FlakCannon : WeaponClass
     // Update is called once per frame
     void Update()
     {
+        if(!startAnim){
+            stopAnim = false;
+        }
+
+        if(startAnim && !stopAnim){
+            stopAnim = true;
+            ejectedShell.Play();
+        }
+            
+        
+
         if(target != null){
             Vector3 look = transform.InverseTransformPoint(target.transform.position);
             float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
@@ -29,11 +46,11 @@ public class FlakCannon : WeaponClass
             if(firingElapsed >= duration && target != null){
                 firingElapsed = 0;
                 GameObject spawned = Instantiate(projectile, transform.position, transform.rotation);
+                shellEjection.SetTrigger("Fire");
                 spawned.tag = this.gameObject.tag;
                 spawned.layer = this.gameObject.layer;
                 ArtilleryTurretShell artilleryTurretShell = spawned.GetComponent<ArtilleryTurretShell>();
                 artilleryTurretShell.tag = this.tag;
-
                 /*
                 GameObject spawned = Instantiate(missile, transform.position, transform.rotation) as GameObject;
                 MissileMovement missileMovement = spawned.GetComponent<MissileMovement>();

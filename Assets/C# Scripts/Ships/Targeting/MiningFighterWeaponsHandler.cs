@@ -34,7 +34,7 @@ public class MiningFighterWeaponsHandler : WeaponClass
 
     void Update()
     {
-        if(asteroid != null && asteroid.GetComponent<AsteroidIdentifyer>()){
+        /*if(asteroid != null && asteroid.GetComponent<AsteroidIdentifyer>()){
             //Debug.Log(depositPos);
             if(Vector3.Distance(gameObject.transform.position, asteroid.transform.position) <= 35f && depositPos != Vector3.zero && asteroidTargeted == false){
                 asteroid.gameObject.layer = 7;
@@ -81,6 +81,6 @@ public class MiningFighterWeaponsHandler : WeaponClass
             steering.asteroid = null;
             miningBeamOne.p2 = null;
             miningBeamTwo.p2 = null;
-        }
+        }*/
     }
 }

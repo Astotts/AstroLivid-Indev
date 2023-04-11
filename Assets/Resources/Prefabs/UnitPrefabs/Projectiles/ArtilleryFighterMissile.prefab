@@ -124,7 +124,7 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 25
   rotateSpeed: 200
-  explosionEffect: {fileID: 764694272094096357, guid: 1770de326a16ea04295e3a087af85bfc, type: 3}
+  explosionEffect: {fileID: 6202712380974417482, guid: ffa29ffdff327684da836b22781319b2, type: 3}
 --- !u!60 &4707156399953636065
 PolygonCollider2D:
   m_ObjectHideFlags: 0

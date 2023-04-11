@@ -13,6 +13,8 @@ public class UnitIdentifyer : MonoBehaviour
     
     [SerializeField] float moveSpeed;
     [SerializeField] float defaultMoveSpeed;
+    float rotateAmount;
+    float rotateSpeed = 400f;
     
     public Collider2D colliderAttack;
 
@@ -24,9 +26,13 @@ public class UnitIdentifyer : MonoBehaviour
     private float healthTimer;
     public bool built;
 
-    //public Vector3 destination;
+    public Vector2 direction;
+    public Vector3 destination;
+    private float distance;
+    private bool atDestination = true;
 
-    private void Awake(){
+    private void Start(){
+        destination = transform.position;
         moveSpeed = defaultMoveSpeed;
         //this.gameObject.tag = this.gameObject.transform.parent.tag;
         healthManager = gameObject.GetComponent<HealthManager>();
@@ -34,8 +40,35 @@ public class UnitIdentifyer : MonoBehaviour
         SetHealthVisible(false);
     }
 
+    public void MoveTo(Vector2 pos){
+        destination = pos;
+        atDestination = false;
+        Debug.Log(destination);
+    }
+
     void FixedUpdate(){
-        //Debug.Log(curFlowField);
+        direction = this.transform.position - destination;
+        direction = direction.normalized;
+        rotateAmount = Vector3.Cross(direction, transform.up).z;
+        unitRB.angularVelocity = rotateAmount * rotateSpeed;
+
+        if(!atDestination){
+            distance = Vector2.Distance(transform.position, destination);
+            if(distance < moveSpeed){
+                unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime; 
+                unitRB.velocity = Vector2.ClampMagnitude(unitRB.velocity, ((moveSpeed / (distance + moveSpeed) + distance - 1)));
+                if(distance < moveSpeed / 20f){
+                    unitRB.velocity = Vector2.zero;
+                    atDestination = true;
+                }
+            }
+            else{
+                unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime;   
+                unitRB.velocity = Vector2.ClampMagnitude(unitRB.velocity, moveSpeed);
+            }    
+        }
+        
+
         if(healthManager.maxHealth > healthManager.health){
             healthTimer += 1f * Time.deltaTime;
         }
@@ -49,7 +82,7 @@ public class UnitIdentifyer : MonoBehaviour
         }
     }
 
-
+    //Methods below are nessesary for specific cases
     public void SetSelectedVisible(bool visible){
         if(selectedGameObject != null){
         selectedGameObject.SetActive(visible);
@@ -59,6 +92,7 @@ public class UnitIdentifyer : MonoBehaviour
         if(selectedHealthObject != null){
         selectedHealthObject.SetActive(visible);
         }
+        
     }
     
     public bool GetSelectedVisible(){
@@ -72,25 +106,16 @@ public class UnitIdentifyer : MonoBehaviour
     void OnMouseOver()
     {
         if(!hovering){
-            collider2DArray = Physics2D.OverlapAreaAll(UtilsClass.GetMouseWorldPosition(), UtilsClass.GetMouseWorldPosition());
-            foreach(Collider2D collider2D in collider2DArray){
-                if(collider2D.GetComponent<UnitIdentifyer>()){
-                    collider2D.GetComponent<UnitIdentifyer>().SetHealthVisible(true);
-                }
-            }
-            hovering = true;
+            selectedHealthObject.SetActive(true);
+            selectedGameObject.SetActive(true);
         }
-        //If your mouse hovers over the GameObject with the script attached, output this message
+        hovering = true;
     }
 
     void OnMouseExit()
     {
-        foreach(Collider2D collider2D in collider2DArray){
-            if(collider2D.GetComponent<UnitIdentifyer>() && collider2D.GetComponent<UnitIdentifyer>().GetSelectedVisible() == false){
-                collider2D.GetComponent<UnitIdentifyer>().SetHealthVisible(false);    
-            }
-        }
+        selectedGameObject.SetActive(false);
+        selectedHealthObject.SetActive(false);
         hovering = false;
-        //The mouse is no longer hovering over the GameObject so output this message each frame
     }
 }

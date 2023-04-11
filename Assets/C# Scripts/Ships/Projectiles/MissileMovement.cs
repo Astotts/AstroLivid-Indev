@@ -48,15 +48,16 @@ public class MissileMovement : MonoBehaviour
     void FixedUpdate() {
         //Debug.Log(target);
         if(target != null){
-        Vector2 direction = (Vector2)target.position - rb.position;
+            Vector2 direction = (Vector2)target.position - rb.position;
 
-        direction.Normalize();
+            direction.Normalize();
 
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+            float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
-        rb.angularVelocity = -rotateAmount * rotateSpeed;
+            rb.angularVelocity = -rotateAmount * rotateSpeed;
 
-        rb.velocity = transform.up * speed;
+            rb.velocity += (Vector2)transform.up * speed;
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, speed);
         }
         /*Cross product (using 2 3D vectors to get a vector that is orthogonal (pointing inwards or outwards from the screen) to the other two vectors) 
         in other words you get a magnitude and a direction. Uses the target's position and the missiles position to get the direction by turning it into a Vector.

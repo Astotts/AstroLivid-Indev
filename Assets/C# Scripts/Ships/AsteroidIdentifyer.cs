@@ -1,11 +1,11 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidIdentifyer : MonoBehaviour
 {
     public static AsteroidIdentifyer instance;
-    public /*FlowFieldNS*/FlowField curFlowField;
+    public /*FlowFieldNS*//*FlowField curFlowField;
     public GameObject gridController;
     private GridController gridControllerScript;
 
@@ -47,7 +47,7 @@ public class AsteroidIdentifyer : MonoBehaviour
         }
     }*/
 
-    public void SetFlowField(/*FlowFieldNS*/FlowField curFlowField){
+    /*public void SetFlowField(/*FlowFieldNS*//*FlowField curFlowField){
         this.curFlowField = curFlowField;
     }
 
@@ -56,5 +56,5 @@ public class AsteroidIdentifyer : MonoBehaviour
         //Debug.Log(curFlowField);
     }*/
     
-}
+//*/}
 
