@@ -58,7 +58,7 @@ public class ShipSelector : MonoBehaviour {
                 }
             }
 
-            Debug.Log(selectedUnitIdentifyerList.Count);
+            //Debug.Log(selectedUnitIdentifyerList.Count);
         }
 
         if (Input.GetMouseButtonDown(1)) {

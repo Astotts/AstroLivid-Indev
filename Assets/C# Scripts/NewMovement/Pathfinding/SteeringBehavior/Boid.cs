@@ -142,9 +142,9 @@ public class Boid : MonoBehaviour {
         return Vector2.ClampMagnitude (v, maxSteerForce);
     }
 
-    private void OnDrawGizmos(){
+    /*private void OnDrawGizmos(){
         //Physics2D.CircleCast (transform.position, boundsRadius, forward, collisionAvoidDst, obstacleMask)
         UnityEditor.Handles.DrawWireDisc(transform.position, transform.forward, boundsRadius, 0.5f);
-    }
+    }*/
 
 }

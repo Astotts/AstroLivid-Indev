@@ -13,9 +13,11 @@ public class TargetingSystem : MonoBehaviour
     List<Collider2D> colliderArray;
     List<Collider2D> enemies;
 
+    [SerializeField] LayerMask layermask;
+
     [SerializeField] WeaponClass[] weapons;
 
-    [SerializeField] bool targetAsteroids;
+    [SerializeField] bool targetAsteroids = false;
 
     void Start(){
         colliderArray = new List<Collider2D>();
@@ -30,7 +32,7 @@ public class TargetingSystem : MonoBehaviour
             elapsed = 0;
             enemies.Clear();
             colliderArray.Clear();
-            colliderArray.AddRange(Physics2D.OverlapCircleAll(this.transform.position, range));
+            colliderArray.AddRange(Physics2D.OverlapCircleAll(this.transform.position, range, layermask));
 
             if(targetAsteroids){
                 foreach(Collider2D collider in colliderArray){
@@ -41,7 +43,7 @@ public class TargetingSystem : MonoBehaviour
             }
             else{
                 foreach(Collider2D collider in colliderArray){
-                    if(collider.tag != this.tag && collider.gameObject.layer != this.gameObject.layer){
+                    if(collider.tag != this.tag){
                         enemies.Add(collider);    
                     }
                 }
@@ -50,13 +52,13 @@ public class TargetingSystem : MonoBehaviour
             if(colliderArray.Count == 0){
                 enemy = null;
                 SetTarget(null);
-                Debug.Log("No enemies Detected");
+                //Debug.Log("No enemies Detected");
             }
             if(enemy != null){
                 if(Vector2.Distance(this.transform.position, enemy.transform.position) > range){
                     enemy = null;
                     SetTarget(null);
-                    Debug.Log("Out Of Range");    
+                    //Debug.Log("Out Of Range");    
                 }
             }
             else if(enemies.Count > 0){
@@ -90,9 +92,13 @@ public class TargetingSystem : MonoBehaviour
 
     public void SetTarget(Collider2D temp){
         foreach(WeaponClass weapon in weapons){
-            Debug.Log(weapon);
-            Debug.Log(enemy);
+            //Debug.Log(weapon);
+            //Debug.Log(enemy);
             weapon.SetTarget(temp);
         }
+    }
+
+    public void SetTarget(Vector2 position){
+        
     }
 }
