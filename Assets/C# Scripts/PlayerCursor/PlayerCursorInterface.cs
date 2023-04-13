@@ -40,6 +40,7 @@ public class PlayerCursorInterface : MonoBehaviour
             if(elapsed >= 0.07f && length - 1 > iterator){
                 elapsed = 0;
                 iterator++;
+                Debug.Log(iterator);
                 Cursor.SetCursor(cursorTextureArray[iconNum][iterator], new Vector2(cursorTextureArray[iconNum][iterator].width / 2, cursorTextureArray[iconNum][iterator].height / 2), CursorMode.ForceSoftware);
             }
             if(elapsed >= 0.07f && length - 1 == iterator){

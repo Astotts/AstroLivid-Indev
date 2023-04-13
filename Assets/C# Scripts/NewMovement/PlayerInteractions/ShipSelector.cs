@@ -6,6 +6,7 @@ using CodeMonkey.Utils;
 public class ShipSelector : MonoBehaviour {
 
     [SerializeField] private Transform selectionAreaTransform;
+    [SerializeField] private ActiveUIPanelController activeUIController;
 
     private Vector3 startPosition;
     private List<UnitIdentifyer> selectedUnitIdentifyerList;
@@ -46,6 +47,7 @@ public class ShipSelector : MonoBehaviour {
             // Deselect all Units
             foreach (UnitIdentifyer unit in selectedUnitIdentifyerList) {
                 unit.SetSelectedVisible(false);
+                unit.selected = false;
             }
             selectedUnitIdentifyerList.Clear();
 
@@ -54,8 +56,16 @@ public class ShipSelector : MonoBehaviour {
                 UnitIdentifyer unit = collider2D.GetComponent<UnitIdentifyer>();
                 if (unit != null) {
                     unit.SetSelectedVisible(true);
+                    unit.selected = true;
                     selectedUnitIdentifyerList.Add(unit);
                 }
+            }
+
+            if(selectedUnitIdentifyerList.Count > 0){
+                activeUIController.SetSelectedActive(true);
+            }
+            else{
+                activeUIController.SetSelectedActive(false);
             }
 
             //Debug.Log(selectedUnitIdentifyerList.Count);

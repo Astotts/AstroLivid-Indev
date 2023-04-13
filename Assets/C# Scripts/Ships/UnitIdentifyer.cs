@@ -114,7 +114,9 @@ public class UnitIdentifyer : MonoBehaviour
 
     void OnMouseExit()
     {
-        selectedGameObject.SetActive(false);
+        if(!selected){
+            selectedGameObject.SetActive(false);   
+        }
         selectedHealthObject.SetActive(false);
         hovering = false;
     }
