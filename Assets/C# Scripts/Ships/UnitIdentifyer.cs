@@ -31,6 +31,8 @@ public class UnitIdentifyer : MonoBehaviour
     private float distance;
     private bool atDestination = true;
 
+    public UnitType.UnitVariant variant;
+
     private void Start(){
         destination = transform.position;
         moveSpeed = defaultMoveSpeed;

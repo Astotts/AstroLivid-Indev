@@ -19,12 +19,6 @@ public class ArtilleryTurretShell : MonoBehaviour
         //Debug.Log("Spawned");
     }
     
-    public void SetUpTags(GameObject turretBase){
-        //Debug.Log(turretBase.tag + " " + gameObject.tag);
-        gameObject.tag = turretBase.transform.parent.tag;
-        gameObject.layer = 13;
-        //Debug.Log(turretBase.tag + " " + gameObject.tag);
-    }
     // Update is called once per frame
     void Update()
     {

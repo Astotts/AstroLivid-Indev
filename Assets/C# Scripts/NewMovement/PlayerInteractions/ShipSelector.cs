@@ -7,6 +7,7 @@ public class ShipSelector : MonoBehaviour {
 
     [SerializeField] private Transform selectionAreaTransform;
     [SerializeField] private ActiveUIPanelController activeUIController;
+    [SerializeField] private UIContainerManager containerManager;
 
     private Vector3 startPosition;
     private List<UnitIdentifyer> selectedUnitIdentifyerList;
@@ -62,10 +63,12 @@ public class ShipSelector : MonoBehaviour {
             }
 
             if(selectedUnitIdentifyerList.Count > 0){
+                containerManager.AddUnitsToList(selectedUnitIdentifyerList);
                 activeUIController.SetSelectedActive(true);
             }
             else{
                 activeUIController.SetSelectedActive(false);
+                containerManager.ClearAll();
             }
 
             //Debug.Log(selectedUnitIdentifyerList.Count);

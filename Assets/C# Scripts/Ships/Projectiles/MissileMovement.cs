@@ -6,6 +6,7 @@ using UnityEngine;
 public class MissileMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private GameObject particles;
 
     public float speed = 25f;
     public float rotateSpeed = 200f;
@@ -21,14 +22,8 @@ public class MissileMovement : MonoBehaviour
     void Start()
     {
         currentMissileTime = missileTime;
-        
         rb = GetComponent<Rigidbody2D>();
     }
-    public void SetUpTags(GameObject parentShip) {
-            gameObject.tag = parentShip.tag;
-            gameObject.layer = 13;
-        }
-    //Sets the tag and collision layer to that of the ship the missile was launched from
 
     public void SetMissileTarget(Collider2D enemy){
         target = enemy.transform;
@@ -37,10 +32,15 @@ public class MissileMovement : MonoBehaviour
     
     void Update() {
         currentMissileTime -= 1 * Time.deltaTime;
-        if(currentMissileTime <= 0){
+        if(currentMissileTime <= 0 && target != null){
+            target = null;
+            rb.angularVelocity = Random.Range(-0.7f, 0.7f) * rotateSpeed;
+            //particles.SetActive(false);
+        }
+        if(currentMissileTime <= -2){
             currentMissileTime = missileTime;
             Destroy(gameObject);
-            }
+        }
     }
     //Once the missile time is 0 it is reset and the missile is destroyed as to allow for smaller ships to escape missiles
 

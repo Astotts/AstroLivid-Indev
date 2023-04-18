@@ -48,9 +48,10 @@ public class FlakCannon : WeaponClass
                 GameObject spawned = Instantiate(projectile, transform.position, transform.rotation);
                 shellEjection.SetTrigger("Fire");
                 spawned.tag = this.gameObject.tag;
-                spawned.layer = this.gameObject.layer;
+                spawned.layer = LayerMask.NameToLayer(LayerMask.LayerToName(this.gameObject.layer + 1));
+                Debug.Log(spawned.layer);
                 ArtilleryTurretShell artilleryTurretShell = spawned.GetComponent<ArtilleryTurretShell>();
-                artilleryTurretShell.tag = this.tag;
+                artilleryTurretShell.tag = this.gameObject.transform.parent.tag;
                 /*
                 GameObject spawned = Instantiate(missile, transform.position, transform.rotation) as GameObject;
                 MissileMovement missileMovement = spawned.GetComponent<MissileMovement>();

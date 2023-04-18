@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a8043e1d465dbca429b406b9735ed32c
+guid: 89b1cdc1a4747034caeebb7cda3c2c2a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SingleUnitContainer_0
+      name: OreProcessorStructure-1.png_0
       rect:
         serializedVersion: 2
-        x: 208
-        y: 172
-        width: 92
-        height: 200
+        x: 3
+        y: 7
+        width: 27
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b88a00860412c36448eb40c56df281a5
-      internalID: 1609087373
+      spriteID: 1997afea9545a0f49a5302f23965fb3a
+      internalID: 1993477738
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SingleUnitContainer_0: 1609087373
+      OreProcessorStructure-1.png_0: 1993477738
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

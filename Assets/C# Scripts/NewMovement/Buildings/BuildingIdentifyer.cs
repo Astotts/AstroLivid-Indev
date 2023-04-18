@@ -12,7 +12,6 @@ public class BuildingIdentifyer : MonoBehaviour
     [SerializeField] private GameObject teamHandler;
 
     [SerializeField] private GameObject resourceManager;
-    private TeamHandler teamHandlerScript;
 
     private HealthManager healthManager;
 
@@ -25,23 +24,17 @@ public class BuildingIdentifyer : MonoBehaviour
     private float healthTimer;
     public bool built;
 
-    void Start()
+    void Awake()
     {
         gameObject.tag = gameObject.transform.parent.tag;
-        teamHandlerScript = teamHandler.GetComponent<TeamHandler>();
         resourceManagerScript = resourceManager.GetComponent<ResourceManager>();
         healthManager = gameObject.GetComponent<HealthManager>();
-        teamHandlerScript.SetUpInstatiatedObject(gameObject, true);
         SetSelectedVisible(false);
         SetHealthVisible(false);
         built = false;
     }
 
     void FixedUpdate(){
-        if(gameObject.layer == 6){
-            teamHandlerScript.SetUpInstatiatedObject(gameObject, true);
-        }
-
         if(resourceManagerScript.powerUsed > resourceManagerScript.power){
             healthResetTimer = increasedTimer;
         }

@@ -10,13 +10,17 @@ public class ActiveUIPanelController : MonoBehaviour
 
     public void SetUnitActionActive(bool input){
         unitActionPanel.SetActive(input);
+        buildingActionPanel.SetActive(false);
+        selectedPanel.SetActive(false);
     }
 
     public void SetBuildingActionActive(bool input){
         buildingActionPanel.SetActive(input);
+        selectedPanel.SetActive(false);
     }
 
     public void SetSelectedActive(bool input){
         selectedPanel.SetActive(input);
+        buildingActionPanel.SetActive(false);
     }
 }

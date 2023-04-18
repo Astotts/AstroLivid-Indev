@@ -18,8 +18,8 @@ public class StaticMissileLauncher : WeaponClass
                 firingElapsed = 0;
                 GameObject spawned = Instantiate(projectile, transform.position, transform.rotation);
                 spawned.GetComponent<MissileMovement>().SetMissileTarget(target);
-                spawned.tag = this.gameObject.tag;
-                spawned.layer = this.gameObject.layer;
+                spawned.tag = this.gameObject.transform.parent.tag;
+                spawned.layer = LayerMask.NameToLayer(LayerMask.LayerToName(this.gameObject.layer + 1));
             }
         }
     }
