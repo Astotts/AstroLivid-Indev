@@ -122,9 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  particles: {fileID: 0}
   speed: 25
   rotateSpeed: 200
   explosionEffect: {fileID: 6202712380974417482, guid: ffa29ffdff327684da836b22781319b2, type: 3}
+  rb: {fileID: 9087985815451552322}
 --- !u!60 &4707156399953636065
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -212,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 7639567699754680567, guid: 1fd9955f1af56d848be8ce05dba8d9ca, type: 3}
       propertyPath: ShapeModule.angle
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639567699754680567, guid: 1fd9955f1af56d848be8ce05dba8d9ca, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7639567699754680567, guid: 1fd9955f1af56d848be8ce05dba8d9ca, type: 3}
       propertyPath: ShapeModule.m_Rotation.y

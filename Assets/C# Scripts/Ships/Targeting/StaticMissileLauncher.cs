@@ -5,6 +5,7 @@ using UnityEngine;
 public class StaticMissileLauncher : WeaponClass
 {
     [SerializeField] GameObject projectile;
+    [SerializeField] Rigidbody2D rb;
 
     private float firingElapsed;
     [SerializeField] private float duration;
@@ -17,7 +18,9 @@ public class StaticMissileLauncher : WeaponClass
             if(firingElapsed >= duration && target != null){
                 firingElapsed = 0;
                 GameObject spawned = Instantiate(projectile, transform.position, transform.rotation);
-                spawned.GetComponent<MissileMovement>().SetMissileTarget(target);
+                MissileMovement missileMovement = spawned.GetComponent<MissileMovement>();
+                missileMovement.SetMissileTarget(target);
+                missileMovement.rb.velocity = rb.velocity;
                 spawned.tag = this.gameObject.transform.parent.tag;
                 spawned.layer = LayerMask.NameToLayer(LayerMask.LayerToName(this.gameObject.layer + 1));
             }

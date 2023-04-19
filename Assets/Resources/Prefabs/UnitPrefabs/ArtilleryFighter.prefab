@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9087985815451552320, guid: 45cdbe448bfb6e844b1d2b9f1663f688, type: 3}
+  rb: {fileID: 7226904832408448307}
   duration: 4
 --- !u!1 &2938072381072455781
 GameObject:
@@ -802,6 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9087985815451552320, guid: 45cdbe448bfb6e844b1d2b9f1663f688, type: 3}
+  rb: {fileID: 7226904832408448307}
   duration: 4
 --- !u!1 &5745219038239728853
 GameObject:
