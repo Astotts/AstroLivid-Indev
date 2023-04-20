@@ -8,17 +8,17 @@ public class MissileMovement : MonoBehaviour
     [SerializeField] private GameObject particles;
 
     public float speed = 45f;
-    public float rotateSpeed = 200f;
+    public float rotateSpeed = 4000f;
 
     public GameObject explosionEffect;
 
     public Rigidbody2D rb;
 
-    private float lifeDuration = 7f;
+    private float lifeDuration = 8f;
     private float lifeElapsed = 0f;
 
     private float deployElapsed = 0f;
-    private float deployDuration = 1f;
+    private float deployDuration = 2f;
 
     void Awake()
     {
