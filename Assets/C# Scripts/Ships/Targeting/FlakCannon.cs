@@ -32,8 +32,6 @@ public class FlakCannon : WeaponClass
             stopAnim = true;
             ejectedShell.Play();
         }
-            
-        
 
         if(target != null){
             Vector3 look = transform.InverseTransformPoint(target.transform.position);
@@ -49,15 +47,9 @@ public class FlakCannon : WeaponClass
                 shellEjection.SetTrigger("Fire");
                 spawned.tag = this.gameObject.tag;
                 spawned.layer = LayerMask.NameToLayer(LayerMask.LayerToName(this.gameObject.layer + 1));
-                Debug.Log(spawned.layer);
                 ArtilleryTurretShell artilleryTurretShell = spawned.GetComponent<ArtilleryTurretShell>();
+                artilleryTurretShell.layermask = transform.parent.parent.GetComponent<TargetingSystem>().layermask;
                 artilleryTurretShell.tag = this.gameObject.transform.parent.tag;
-                /*
-                GameObject spawned = Instantiate(missile, transform.position, transform.rotation) as GameObject;
-                MissileMovement missileMovement = spawned.GetComponent<MissileMovement>();
-                missileMovement.SetUpTags(artilleryFighter);
-                missileMovement.SetMissileTarget(enemy.GetComponent<Collider2D>());
-                */
             }
         }
     }

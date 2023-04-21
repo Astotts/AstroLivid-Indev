@@ -21,6 +21,7 @@ public class StaticMissileLauncher : WeaponClass
                 MissileMovement missileMovement = spawned.GetComponent<MissileMovement>();
                 missileMovement.SetMissileTarget(target);
                 missileMovement.rb.velocity = rb.velocity;
+                missileMovement.layermask = transform.parent.GetComponent<TargetingSystem>().layermask;
                 spawned.tag = this.gameObject.transform.parent.tag;
                 spawned.layer = LayerMask.NameToLayer(LayerMask.LayerToName(this.gameObject.layer + 1));
             }

@@ -20,11 +20,11 @@ public class HealthGUI : MonoBehaviour
         SetSize(size);
     }
 
-    public void UpdateHealth(int health, int maxHealth) {
-        this.health = (float)health;
-        this.maxHealth = (float)maxHealth;
+    public void UpdateHealth(float health, float maxHealth) {
+        this.health = health;
+        this.maxHealth = maxHealth;
         if(health > 0){
-            size = (float)(this.health / this.maxHealth);
+            size = (this.health / this.maxHealth);
             SetSize(size);
         }
         else {

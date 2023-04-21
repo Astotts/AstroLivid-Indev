@@ -10,13 +10,17 @@ public class ArtilleryTurretShell : MonoBehaviour
 
     private float speed = 70f;
 
+    private List<Collider2D> colliderArray;
+    public LayerMask layermask;
+    private float damage = 5;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
+        colliderArray = new List<Collider2D>();
         currentArtilleryTime = artilleryTime;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        //Debug.Log("Spawned");
     }
     
     // Update is called once per frame
@@ -36,9 +40,17 @@ public class ArtilleryTurretShell : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider2D){
         if(collider2D.tag != gameObject.tag){
-            Instantiate(explosionEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Death();
         }
     }
     
+    void Death(){
+        colliderArray.Clear();
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        colliderArray.AddRange(Physics2D.OverlapCircleAll(this.transform.position, 5, layermask));
+        foreach(Collider2D collider in colliderArray){
+            collider.GetComponent<HealthManager>().health -= damage;
+        }
+        Destroy(gameObject);
+    }
 }

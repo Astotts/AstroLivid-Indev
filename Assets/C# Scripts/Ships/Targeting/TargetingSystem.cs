@@ -13,7 +13,7 @@ public class TargetingSystem : MonoBehaviour
     List<Collider2D> colliderArray;
     List<Collider2D> enemies;
 
-    [SerializeField] LayerMask layermask;
+    [SerializeField] public LayerMask layermask;
 
     [SerializeField] WeaponClass[] weapons;
 

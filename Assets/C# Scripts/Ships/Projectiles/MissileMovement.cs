@@ -20,8 +20,13 @@ public class MissileMovement : MonoBehaviour
     private float deployElapsed = 0f;
     private float deployDuration = 2f;
 
+    private List<Collider2D> colliderArray;
+    public LayerMask layermask;
+    private float damage = 5;
+
     void Awake()
     {
+        colliderArray = new List<Collider2D>();
         lifeElapsed = lifeDuration;
         deployElapsed = deployDuration;
         rb.AddForce((Vector2)transform.up * speed);
@@ -71,9 +76,17 @@ public class MissileMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider2D){
         //Debug.Log("Missile Collided");
         if(collider2D.tag != gameObject.tag){
-            Instantiate(explosionEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Death();
         }
     }
-    //Spawns in an explosion effect on the missile position then destroys the missile
+    
+    void Death(){
+        colliderArray.Clear();
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        colliderArray.AddRange(Physics2D.OverlapCircleAll(this.transform.position, 5, layermask));
+        foreach(Collider2D collider in colliderArray){
+            collider.GetComponent<HealthManager>().LowerHealth(damage);
+        }
+        Destroy(gameObject);
+    }
 }

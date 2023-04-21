@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a174f58cb2eb3478bc65204b115c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 6202712380974417482, guid: ffa29ffdff327684da836b22781319b2, type: 3}
   maxHealth: 35
   health: 35
   healthGUIManager: {fileID: 3028943485959721265}
