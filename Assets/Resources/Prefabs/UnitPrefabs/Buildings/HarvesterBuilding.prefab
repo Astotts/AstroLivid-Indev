@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1463957924400338324
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243443386002689193}
   - component: {fileID: 4884545739863586080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GantryMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5843849660785545758}
   - component: {fileID: 4815014825919053504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiningBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,11 +264,10 @@ GameObject:
   - component: {fileID: 9146808628539811748}
   - component: {fileID: 5929494600411168581}
   - component: {fileID: 3445941648517197419}
-  - component: {fileID: 4348189302691292757}
   - component: {fileID: 5631548430413427667}
   - component: {fileID: 951814220414033605}
   - component: {fileID: 158524953943146988}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HarvesterBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +303,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -341,24 +340,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4348189302691292757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368602070897450262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e20f3ed2ace5b14181e86daa28fa9c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedGameObject: {fileID: 6558956838122890483}
-  selectedHealthObject: {fileID: 4074840359771394682}
-  player: {fileID: 302011417342872666, guid: bfaf3da4bf51a9540a1ad73102dda0e3, type: 3}
-  teamHandler: {fileID: 8958728729488600729, guid: 9112dc8c4dca28f409f82eb139599a63, type: 3}
-  resourceManager: {fileID: 5980052244833326543, guid: 504e7b8aaac20594ea64f7ef4357e058, type: 3}
-  built: 0
 --- !u!114 &5631548430413427667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +355,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 0}
   maxHealth: 0
   health: 0
-  healthGUIManager: {fileID: 0}
+  healthGUIManager: {fileID: 530296007204477388}
 --- !u!212 &951814220414033605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -439,12 +420,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49aaa263417e4714bbd7ca9b70964b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  selectedGameObject: {fileID: 4074840359771394682}
+  selectedHealthObject: {fileID: 6558956838122890483}
+  unitRB: {fileID: 3445941648517197419}
+  selected: 0
+  variant: 1
+  destination: {x: 0, y: 0, z: 0}
   creditCost: 0
   populationCost: 0
   powerCost: 0
+  built: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &4074840359771394682
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +630,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6511300789309615289
@@ -655,7 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5530661177435333617}
   - component: {fileID: 3476694544476836669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TractorBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7688200421604971557}
   - component: {fileID: 118146304998632641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiningGantryMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652327667406555527}
   - component: {fileID: 2065131787525150995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlidingGantry
   m_TagString: Untagged
   m_Icon: {fileID: 0}

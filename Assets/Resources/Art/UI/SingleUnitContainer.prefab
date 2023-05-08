@@ -92,6 +92,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 21300000, guid: e2768a2d2ab11e04589d95f7b40d3897, type: 3}
   - {fileID: 21300000, guid: ae25a3882a1ccaa4aa3b6eeae8b70434, type: 3}
   unitList: []
@@ -186,7 +194,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
