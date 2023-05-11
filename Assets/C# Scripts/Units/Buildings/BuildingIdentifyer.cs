@@ -13,7 +13,20 @@ public class BuildingIdentifyer : UnitIdentifyer
     private float healthResetTimer;
     private float normalTimer = 0.3f;
     private float healthTimer;
+    
+    //Construction
     public bool built;
+    [SerializeField] private List<GameObject> piecesList;
+    [SerializeField] private List<GameObject> piecesPositions;
+    public int partCount;
+    private int placedCount;
+
+    private List<Collider2D> physicsCheck;
+
+    [SerializeField] private ContactFilter2D physicsCheck;
+
+    [SerializeField] private GameObject structure;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
@@ -24,6 +37,7 @@ public class BuildingIdentifyer : UnitIdentifyer
     }
 
     void FixedUpdate(){
+        
         /*if(resourceManagerScript.powerUsed > resourceManagerScript.power){
             healthResetTimer = increasedTimer;
         }
@@ -42,5 +56,13 @@ public class BuildingIdentifyer : UnitIdentifyer
             healthManager.health += 1;
             healthTimer = 0f;
         }*/
+    }
+
+    public PlacePart(){
+        health += maxHealth / partCount;
+        if(placedCount == partCount){
+            spriteRenderer.SetActive(false);
+            structure.SetActive(true);
+        }
     }
 }
