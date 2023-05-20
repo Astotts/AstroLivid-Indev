@@ -64,7 +64,6 @@ public class ShipSelector : MonoBehaviour {
             }
 
             if(selectedUnitIdentifyerList.Count > 0){
-                Debug.Log(selectedUnitIdentifyerList.Count);
                 //TODO Make a hashlist to improve performance
                 foreach(UnitIdentifyer unit in selectedUnitIdentifyerList){
                     if((ushort)unit.variant > 7){

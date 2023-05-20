@@ -17,20 +17,22 @@ public class BuildingIdentifyer : UnitIdentifyer
     //Construction
     public bool built;
     [SerializeField] private List<GameObject> piecesList;
-    [SerializeField] private List<GameObject> piecesPositions;
-    public int partCount;
+    [SerializeField] private List<Transform> positionList;
+    public BuildOrder buildOrder;
+    [SerializeField] private int partCount;
     private int placedCount;
 
     private List<Collider2D> physicsCheck;
 
-    [SerializeField] private ContactFilter2D physicsCheck;
+    //[SerializeField] private ContactFilter2D physicsCheck;
 
     [SerializeField] private GameObject structure;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
-        healthManager = gameObject.GetComponent<HealthManager>();
+        buildOrder = new BuildOrder{type = variant, piecesList = this.piecesList, positionList = this.positionList};
+        //healthManager = gameObject.GetComponent<HealthManager>();
         SetSelectedVisible(false);
         SetHealthVisible(false);
         built = false;
@@ -58,11 +60,14 @@ public class BuildingIdentifyer : UnitIdentifyer
         }*/
     }
 
-    public PlacePart(){
-        health += maxHealth / partCount;
+    public void PlacePart(){
+        healthManager.health += healthManager.maxHealth / partCount;
+        piecesList.RemoveAt(0);
+        positionList.RemoveAt(0);
         if(placedCount == partCount){
-            spriteRenderer.SetActive(false);
+            spriteRenderer.enabled = !spriteRenderer.enabled;
             structure.SetActive(true);
         }
+        placedCount++;
     }
 }

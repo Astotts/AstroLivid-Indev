@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 8419104328527406768}
   - component: {fileID: 8419104328527406771}
   - component: {fileID: 303571108116011260}
+  - component: {fileID: 4256984896311229926}
+  - component: {fileID: 7445717533791090859}
   m_Layer: 0
   m_Name: ConstructionShip
   m_TagString: Untagged
@@ -143,3 +145,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18279266, y: 0.4627533}
   m_EdgeRadius: 0
+--- !u!114 &4256984896311229926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419104328527406770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f2a138c2982ff47bc834dd5d091d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipCollider: {fileID: 303571108116011260}
+  unitRB: {fileID: 7445717533791090859}
+  moveSpeed: 40
+  defaultMoveSpeed: 40
+  direction: {x: 0, y: 0}
+  constructionState: 0
+  destination: {fileID: 0}
+  home: {fileID: 0}
+--- !u!50 &7445717533791090859
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419104328527406770}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
