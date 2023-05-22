@@ -33,38 +33,62 @@ public class Mothership : UnitIdentifyer
             switch (constructionShip.constructionState)
             {
                 case ConstructionStates.Available:
-                    piecesList.AddRange(buildQueue[0].piecesList);
-                    positionList.AddRange(buildQueue[0].positionList); 
-                    constructionShip.constructionState = ConstructionStates.Awaiting;
+                    //Debug.Log("Available");
+                    if(piecesList.Count > 0){
+                        constructionShip.constructionState = ConstructionStates.Awaiting;
+                        break;
+                    }
+                    if(buildQueue.Count > 0 && piecesList.Count == 0){
+                        piecesList.AddRange(buildQueue[0].piecesList);
+                        positionList.AddRange(buildQueue[0].positionList); 
+                    }
+                    
                 break;
 
                 case ConstructionStates.Awaiting:
+                    //Debug.Log("Awaiting");
                     if(piecesList.Count == 0){
                         constructionShip.constructionState = ConstructionStates.Available;
-                        buildQueue.RemoveAt(0);
                         break;
                     }
-                    constructionShip.SetPiece(piecesList[0]);
-                    constructionShip.destination = positionList[0];
-                    positionList.RemoveAt(0);
-                    piecesList.RemoveAt(0);
-                    constructionShip.constructionState = ConstructionStates.Building;
+                    if(!constructionShip.carrying && piecesList.Count > 0){
+                        constructionShip.SetPiece(piecesList[0], buildQueue[0].building);
+                        constructionShip.destination = positionList[0];
+                        //Debug.Log(constructionShip.destination);
+                        positionList.RemoveAt(0);
+                        piecesList.RemoveAt(0);
+                        constructionShip.constructionState = ConstructionStates.Grabbing;
+                    }
                 break;
 
                 case ConstructionStates.Done:
+                    //Debug.Log("Done");
                     constructionShip.constructionState = ConstructionStates.Returning;
+                    
                 break;
 
                 case ConstructionStates.Returning:
+                    //Debug.Log("Returning");
                     if(Vector2.Distance(constructionShip.transform.position, constructionShip.home.position) < 5f){
                         constructionShip.constructionState = ConstructionStates.Awaiting;
                         break;
                     }
                 break;
 
+                case ConstructionStates.Grabbing:
+                    //Debug.Log("Building Handle This State In Construction Ship");
+                    if(positionList.Count > 0 && constructionShip.carrying){
+                        constructionShip.constructionState = ConstructionStates.Building;
+                    }
+                        
+                    //constructionShip.constructionState = ConstructionStates.Done;
+                break;
+
             }
         }
-        
+        if(buildQueue.Count > 0 && piecesList.Count == 0){
+            buildQueue.RemoveAt(0);
+        }
     }
 
     //Need Interface between UI and Queue

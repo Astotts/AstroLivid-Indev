@@ -31,7 +31,7 @@ public class BuildingIdentifyer : UnitIdentifyer
 
     void Awake()
     {
-        buildOrder = new BuildOrder{type = variant, piecesList = this.piecesList, positionList = this.positionList};
+        buildOrder = new BuildOrder{type = variant, building = this, piecesList = this.piecesList, positionList = this.positionList};
         //healthManager = gameObject.GetComponent<HealthManager>();
         SetSelectedVisible(false);
         SetHealthVisible(false);

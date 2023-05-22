@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2922351304085476088}
   - component: {fileID: 2922351304085476089}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scaffolding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2922351304394994580}
   - component: {fileID: 2922351304394994583}
   - component: {fileID: 4461403223896647782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HarvesterPiece4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 2922351304394994582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 738.64, y: 528.91, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 1}
+  m_LocalScale: {x: 1.5625, y: 1.5625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2922351304085476088}
