@@ -34,15 +34,16 @@ public class Mothership : UnitIdentifyer
             {
                 case ConstructionStates.Available:
                     //Debug.Log("Available");
-                    if(piecesList.Count > 0){
-                        constructionShip.constructionState = ConstructionStates.Awaiting;
-                        break;
-                    }
                     if(buildQueue.Count > 0 && piecesList.Count == 0){
+                        constructionShip.building = buildQueue[0].building;
                         piecesList.AddRange(buildQueue[0].piecesList);
                         positionList.AddRange(buildQueue[0].positionList); 
+                        break;
                     }
-                    
+                    if(piecesList.Count > 0){
+                        constructionShip.constructionState = ConstructionStates.Awaiting;
+                        constructionShip.building = buildQueue[0].building;
+                    }
                 break;
 
                 case ConstructionStates.Awaiting:

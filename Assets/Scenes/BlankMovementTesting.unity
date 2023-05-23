@@ -1537,6 +1537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConstructionShip (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8419104328527406771, guid: d58a27d35e5b96f4098d751d0a3d262f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58a27d35e5b96f4098d751d0a3d262f, type: 3}
 --- !u!114 &216884757 stripped
@@ -2101,6 +2105,7 @@ MonoBehaviour:
   selectedGameObject: {fileID: 356914409}
   selectedHealthObject: {fileID: 1189248705}
   unitRB: {fileID: 268870543}
+  healthManager: {fileID: 0}
   selected: 0
   variant: 0
   destination: {x: 0, y: 0, z: 0}
@@ -11006,6 +11011,10 @@ PrefabInstance:
     - target: {fileID: 8419104328527406770, guid: d58a27d35e5b96f4098d751d0a3d262f, type: 3}
       propertyPath: m_Name
       value: ConstructionShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419104328527406771, guid: d58a27d35e5b96f4098d751d0a3d262f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58a27d35e5b96f4098d751d0a3d262f, type: 3}

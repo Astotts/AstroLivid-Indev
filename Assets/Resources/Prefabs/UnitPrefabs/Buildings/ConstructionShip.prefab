@@ -165,7 +165,10 @@ MonoBehaviour:
   constructionState: 0
   carrying: 0
   destination: {fileID: 0}
+  piece: {fileID: 0}
+  building: {fileID: 0}
   home: {fileID: 0}
+  anchorPoint: {fileID: 5097861280288000384}
 --- !u!50 &7445717533791090859
 Rigidbody2D:
   serializedVersion: 4

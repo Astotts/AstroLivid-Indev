@@ -11,7 +11,7 @@ public class UnitIdentifyer : MonoBehaviour
 
     [SerializeField] protected Rigidbody2D unitRB;
 
-    protected HealthManager healthManager;
+    [SerializeField] protected HealthManager healthManager;
 
     public bool selected;
 

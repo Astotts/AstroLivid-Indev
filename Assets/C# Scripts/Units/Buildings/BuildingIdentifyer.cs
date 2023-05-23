@@ -27,6 +27,7 @@ public class BuildingIdentifyer : UnitIdentifyer
     //[SerializeField] private ContactFilter2D physicsCheck;
 
     [SerializeField] private GameObject structure;
+    [SerializeField] private GameObject piecesAnchor;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Awake()
@@ -61,12 +62,13 @@ public class BuildingIdentifyer : UnitIdentifyer
     }
 
     public void PlacePart(){
-        healthManager.health += healthManager.maxHealth / partCount;
+        this.healthManager.health += this.healthManager.maxHealth / partCount;
         piecesList.RemoveAt(0);
         positionList.RemoveAt(0);
         if(placedCount == partCount){
             spriteRenderer.enabled = !spriteRenderer.enabled;
             structure.SetActive(true);
+            piecesAnchor.SetActive(false);
         }
         placedCount++;
     }
