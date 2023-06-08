@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "a0894038dd884239b7443705d23dd5cb",
     "m_Properties": [
@@ -20,6 +20,12 @@
         }
     ],
     "m_Keywords": [],
+    "m_Dropdowns": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "c814c887986548ae89e84ca66d7a3b9e"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "a1ff43cb3e224070b47743a5f11b8892"
@@ -481,10 +487,11 @@
         "serializedMesh": {
             "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
-        }
+        },
+        "preventRotation": false
     },
     "m_Path": "Shader Graphs",
-    "m_ConcretePrecision": 0,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -1004,9 +1011,13 @@
         "m_GuidSerialized": "05e6225b-fba4-423a-8d7b-b4c713769b7a"
     },
     "m_Name": "LaserThickness",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_4781e2deeb414ef7afb892874b7ce48b",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1201,9 +1212,13 @@
         "m_GuidSerialized": "6a96e05a-0b04-4db1-a1da-1a3dde7647e6"
     },
     "m_Name": "LaserSpeed",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector2_54fa253dbc0a4ff1b39354693e5e12be",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1328,9 +1343,13 @@
         "m_GuidSerialized": "2e276351-e6cb-421e-b811-3531257bc0ab"
     },
     "m_Name": "MainTex",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Texture2D_6704a5c1741a48eca8d8874c0a7698c1",
     "m_OverrideReferenceName": "MainTex_",
     "m_GeneratePropertyBlock": false,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1339,6 +1358,8 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -1536,9 +1557,13 @@
         "m_GuidSerialized": "c1213d18-cdc0-4d45-a24b-2c741254f71f"
     },
     "m_Name": "LaserEdgeSmoothness",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_7b01700332024078b72c49b1cfa8f51c",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1646,19 +1671,24 @@
         "m_GuidSerialized": "c03c5b37-ccf0-41eb-9186-25b199755947"
     },
     "m_Name": "Color",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_80c85782fc074e17a3763b1a71b80903",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 4.66725492477417,
-        "g": 389.7149963378906,
-        "b": 445.7219543457031,
+        "r": 12.047059059143067,
+        "g": 766.99609375,
+        "b": 746.9176635742188,
         "a": 1.0
     },
+    "isMainColor": false,
     "m_ColorMode": 1
 }
 
@@ -2515,16 +2545,46 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "c814c887986548ae89e84ca66d7a3b9e",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "80c85782fc074e17a3763b1a71b80903"
+        },
+        {
+            "m_Id": "6704a5c1741a48eca8d8874c0a7698c1"
+        },
+        {
+            "m_Id": "7b01700332024078b72c49b1cfa8f51c"
+        },
+        {
+            "m_Id": "4781e2deeb414ef7afb892874b7ce48b"
+        },
+        {
+            "m_Id": "54fa253dbc0a4ff1b39354693e5e12be"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 1,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "c822342dc2e042c9af3adcd3b516a6a8",
     "m_ActiveSubTarget": {
         "m_Id": "751cc175f8a94810b74e61d914780c87"
     },
+    "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
+    "m_ZTestMode": 4,
+    "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
-    "m_TwoSided": false,
+    "m_RenderFace": 2,
     "m_AlphaClip": false,
-    "m_CustomEditorGUI": ""
+    "m_CastShadows": true,
+    "m_ReceiveShadows": true,
+    "m_CustomEditorGUI": "",
+    "m_SupportVFX": false
 }
 
 {

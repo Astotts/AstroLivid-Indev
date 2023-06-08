@@ -9,14 +9,15 @@ public class UnitUIContainer : MonoBehaviour
 
     public List<UnitIdentifyer> unitList;
 
-    public UnitType.UnitVariant variant;
+    public UnitVariant variant;
 
     [Header("Component Values")]
     [SerializeField] private UnityEngine.UI.Image image;
     [SerializeField] private TMPro.TextMeshProUGUI text;
 
-    public void SetUpContainer(UnitType.UnitVariant variant_){
+    public void SetUpContainer(UnitVariant variant_){
         this.variant = variant_;
+        //Debug.Log((int)variant);
         this.image.sprite = unitImage[(int)variant_];
         this.gameObject.SetActive(true);
     }
@@ -25,7 +26,7 @@ public class UnitUIContainer : MonoBehaviour
         this.gameObject.SetActive(false);
         text.text = "";
         image.sprite = null;
-        variant = UnitType.UnitVariant.None;
+        variant = UnitVariant.None;
         unitList.Clear();
     }
 
@@ -38,7 +39,7 @@ public class UnitUIContainer : MonoBehaviour
             this.gameObject.SetActive(false);
             text.text = "";
             image.sprite = null;
-            variant = UnitType.UnitVariant.None;
+            variant = UnitVariant.None;
         }
     }
 }

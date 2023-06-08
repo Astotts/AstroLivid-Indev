@@ -7,14 +7,11 @@ public class UIContainerManager : MonoBehaviour
     private List<UnitUIContainer> activeContainerList;
     [SerializeField] private List<UnitUIContainer> inactiveContainerList;
 
-    List<UnitIdentifyer> clonedList;
-
     void Start(){
         activeContainerList = new List<UnitUIContainer>();
-        clonedList = new List<UnitIdentifyer>();
     }
     
-    public void SetUpContainer(UnitType.UnitVariant variant_){
+    public void SetUpContainer(UnitVariant variant_){
         inactiveContainerList[0].SetUpContainer(variant_);
         activeContainerList.Add(inactiveContainerList[0]);
         inactiveContainerList.Remove(inactiveContainerList[0]);
@@ -28,25 +25,49 @@ public class UIContainerManager : MonoBehaviour
         activeContainerList.Clear();
     }
 
-    public void AddUnitsToList(List<UnitIdentifyer> unitList){
-        clonedList = unitList;
-
-        ClearAll();
-        if(activeContainerList.Count == 0){
-            SetUpContainer(clonedList[clonedList.Count - 1].variant);
-            activeContainerList[0].unitList.Add(clonedList[clonedList.Count - 1]);
-        }
-
-        for(int x = clonedList.Count - 1; -1 < x; x--){
-            for(int y = activeContainerList.Count - 1; -1 < y; y--){
-                if(activeContainerList[y].variant == clonedList[x].variant){
-                    activeContainerList[y].unitList.Add(clonedList[x]);
-                    //Debug.Log("Added" + clonedList[x].variant);
-                    break;
-                }
-                //Debug.Log("New Container");
-                SetUpContainer(clonedList[x].variant);
+    public void ClearAllBuildings(){
+        for(int i = 0; i < activeContainerList.Count; i++){
+            if((int)activeContainerList[i].variant < 8){
+                Clear(activeContainerList[i]);
+                continue;
             }
         }
+    }
+
+    private void Clear(UnitUIContainer container){
+        container.ClearContainer();
+        inactiveContainerList.Add(container);
+        activeContainerList.Remove(container);
+    }
+
+    public void AddUnitsToList(List<UnitIdentifyer> clonedList){
+
+        
+        ClearAll();
+        
+        if(activeContainerList.Count == 0){
+            SetUpContainer(clonedList[0].variant);
+        }
+
+        foreach(UnitIdentifyer unit in clonedList)
+        {
+            for(int i = 0; i < activeContainerList.Count; i++){
+                if(activeContainerList[i].variant == unit.variant){
+                    activeContainerList[i].unitList.Add(unit);
+                    break;
+                }
+                else if(i == activeContainerList.Count - 1){
+                    SetUpContainer(unit.variant);
+                }
+            }
+        }
+
+        foreach(UnitUIContainer container in activeContainerList){
+            if((int)container.variant >= 8){
+                ClearAllBuildings();
+                break;   
+            }
+        }
+    
     }
 }

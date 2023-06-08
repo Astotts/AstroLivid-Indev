@@ -9,13 +9,20 @@ public class ShipSelector : MonoBehaviour {
     [SerializeField] private UIContainerManager containerManager;
 
     private Vector3 startPosition;
-    private List<UnitIdentifyer> selectedUnitIdentifyerList;
+
+    private List<UnitIdentifyer> selectedUnitList;
+
+    private List<UnitIdentifyer> unitIdentifyerList;
+    private HashSet<UnitVariant> selectedUnitSet;
 
     private bool buildUI;
 
     private void Awake() {
-        selectedUnitIdentifyerList = new List<UnitIdentifyer>();
+        selectedUnitSet = new HashSet<UnitVariant>();
+        selectedUnitList = new List<UnitIdentifyer>();
+        unitIdentifyerList = new List<UnitIdentifyer>();
         selectionAreaTransform.gameObject.SetActive(false);
+        selectedUnitSet.Clear();
     }
 
     private void Update() {
@@ -42,32 +49,57 @@ public class ShipSelector : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0)) {
             // Left Mouse Button Released
-            selectionAreaTransform.gameObject.SetActive(false);
-
-            Collider2D[] collider2DArray = Physics2D.OverlapAreaAll(startPosition, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
             // Deselect all Units
-            foreach (UnitIdentifyer unit in selectedUnitIdentifyerList) {
+            foreach (UnitIdentifyer unit in unitIdentifyerList) {
                 unit.SetSelectedVisible(false);
                 unit.selected = false;
             }
-            selectedUnitIdentifyerList.Clear();
+            unitIdentifyerList.Clear();
+
+            foreach (UnitIdentifyer unit in selectedUnitList) {
+                unit.SetSelectedVisible(false);
+                unit.selected = false;
+            }
+            selectedUnitList.Clear();
+            
+            selectionAreaTransform.gameObject.SetActive(false);
 
             // Select Units within Selection Area
+
+            Collider2D[] collider2DArray = Physics2D.OverlapAreaAll(startPosition, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
             foreach (Collider2D collider2D in collider2DArray) {
                 UnitIdentifyer unit = collider2D.GetComponent<UnitIdentifyer>();
                 if (unit != null) {
+                    if(!selectedUnitSet.Contains(unit.variant)){
+                        selectedUnitSet.Add(unit.variant);
+                    }
                     unit.SetSelectedVisible(true);
                     unit.selected = true;
-                    selectedUnitIdentifyerList.Add(unit);
+                    unitIdentifyerList.Add(unit);
                 }
             }
 
-            if(selectedUnitIdentifyerList.Count > 0){
-                //TODO Make a hashlist to improve performance
-                foreach(UnitIdentifyer unit in selectedUnitIdentifyerList){
+            for(ushort x = 0; x < 8; x++){
+                if(selectedUnitSet.Contains((UnitVariant)x) && unitIdentifyerList.Count > 0){
+                    for(int y = unitIdentifyerList.Count - 1; y >= 0; y--){
+                        if((int)unitIdentifyerList[y].variant < 8){
+                            //Debug.Log("Removing " + y);
+                            //Debug.Log("Count " + unitIdentifyerList.Count);
+                            unitIdentifyerList[y].SetSelectedVisible(false);
+                            unitIdentifyerList[y].selected = false;
+                            unitIdentifyerList.Remove(unitIdentifyerList[y]);
+                        }
+                    }        
+                    break;
+                }
+            }
+            selectedUnitList = unitIdentifyerList;
+
+            if(selectedUnitList.Count > 0){
+                foreach(UnitIdentifyer unit in selectedUnitList){
                     if((ushort)unit.variant > 7){
-                        containerManager.AddUnitsToList(selectedUnitIdentifyerList);
+                        containerManager.AddUnitsToList(selectedUnitList);
                         activeUIController.SetSelectedActive(true);
                         buildUI = false;
                         break;
@@ -84,9 +116,6 @@ public class ShipSelector : MonoBehaviour {
                 activeUIController.SetSelectedActive(false);
                 containerManager.ClearAll();
             }
-
-            
-            
         }
 
         if (Input.GetMouseButtonDown(1)) {
@@ -97,7 +126,7 @@ public class ShipSelector : MonoBehaviour {
 
             int targetPositionListIndex = 0;
 
-            foreach (UnitIdentifyer unit in selectedUnitIdentifyerList) {
+            foreach (UnitIdentifyer unit in selectedUnitList) {
                 Debug.Log(unit);
                 unit.MoveTo(targetPositionList[targetPositionListIndex]);
                 targetPositionListIndex++;

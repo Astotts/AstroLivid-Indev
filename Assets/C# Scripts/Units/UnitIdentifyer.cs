@@ -15,7 +15,7 @@ public class UnitIdentifyer : MonoBehaviour
 
     public bool selected;
 
-    public UnitType.UnitVariant variant;
+    public UnitVariant variant;
 
     protected bool atDestination = true;
     public Vector3 destination;
@@ -64,4 +64,6 @@ public class UnitIdentifyer : MonoBehaviour
         selectedHealthObject.SetActive(false);
         hovering = false;
     }
+
+    
 }

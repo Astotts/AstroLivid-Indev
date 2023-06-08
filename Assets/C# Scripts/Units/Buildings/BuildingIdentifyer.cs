@@ -7,28 +7,21 @@ public class BuildingIdentifyer : UnitIdentifyer
     public float creditCost;
     public float populationCost;
     public float powerCost;
-
-    private float increasedTimer = 0.5f;
-    
-    private float healthResetTimer;
-    private float normalTimer = 0.3f;
-    private float healthTimer;
     
     //Construction
-    public bool built;
+    [HideInInspector] public bool built = false;
+    [SerializeField] public float totalWeldTime;
+    [HideInInspector] public float weldTime = 0;
+    [HideInInspector] private float weldAlpha;
+    [HideInInspector] public BuildOrder buildOrder;
     [SerializeField] private List<GameObject> piecesList;
     [SerializeField] private List<Transform> positionList;
-    public BuildOrder buildOrder;
     [SerializeField] private int partCount;
     private int placedCount;
-
-    private List<Collider2D> physicsCheck;
-
-    //[SerializeField] private ContactFilter2D physicsCheck;
-
     [SerializeField] private GameObject structure;
     [SerializeField] private GameObject piecesAnchor;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer weldLines;
 
     void Awake()
     {
@@ -36,40 +29,51 @@ public class BuildingIdentifyer : UnitIdentifyer
         //healthManager = gameObject.GetComponent<HealthManager>();
         SetSelectedVisible(false);
         SetHealthVisible(false);
-        built = false;
+        
+    }
+
+    public void UpdateWeld(){
+        weldAlpha = weldTime / totalWeldTime; 
+        weldLines.color = new Color(255, 255, 255, weldAlpha);
+    }
+
+    IEnumerator CoolWeld(){
+        float totalWeldTime = 3;
+        for (float timeElapsed = totalWeldTime; timeElapsed > 0; timeElapsed -= Time.deltaTime)
+        {
+            float alpha = Mathf.InverseLerp(0, totalWeldTime, timeElapsed);
+            weldLines.color = new Color(255, 255, 255, alpha);
+            
+            yield return null;
+        }
+
+        weldLines.color = new Color(255, 255, 255, 0);
+        yield break;
     }
 
     void FixedUpdate(){
-        
-        /*if(resourceManagerScript.powerUsed > resourceManagerScript.power){
-            healthResetTimer = increasedTimer;
-        }
-        else{
-            healthResetTimer = normalTimer;
-        }
-        
-        if(healthManager.maxHealth > healthManager.health){
-            healthTimer += 1f * Time.deltaTime;
-        }
-        else{
-            built = true;
-        }
-        
-        if(!built && healthTimer >= healthResetTimer){
-            healthManager.health += 1;
-            healthTimer = 0f;
-        }*/
+
     }
 
     public void PlacePart(){
         this.healthManager.health += this.healthManager.maxHealth / partCount;
         piecesList.RemoveAt(0);
         positionList.RemoveAt(0);
-        if(placedCount == partCount){
-            spriteRenderer.enabled = !spriteRenderer.enabled;
-            structure.SetActive(true);
-            piecesAnchor.SetActive(false);
-        }
         placedCount++;
+        if(placedCount == partCount){
+            built = true;
+            for(int i = partCount - 1; i >= 0; i--){
+                piecesAnchor.transform.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                piecesAnchor.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            }
+        }
+    }
+
+    public void Weld(){
+        spriteRenderer.enabled = !spriteRenderer.enabled;
+        built = false;
+        structure.SetActive(true);
+        piecesAnchor.SetActive(false);
+        StartCoroutine(CoolWeld());
     }
 }

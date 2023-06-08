@@ -20,11 +20,15 @@ public class ConstructionShip : MonoBehaviour
 
     private bool atDestination = true;
     public bool carrying = false;
-    public Transform destination;
+    public Transform assignedDestination;
+    private Transform destination;
     public GameObject piece;
     public BuildingIdentifyer building;
     [SerializeField] public Transform home;
+    [SerializeField] public Transform entry;
     [SerializeField] public Transform anchorPoint;
+
+    [SerializeField] private List<SpriteRenderer> attachedSpriteList;
 
     private float angle = 0;
     private float radius = 30f;
@@ -32,20 +36,38 @@ public class ConstructionShip : MonoBehaviour
     void Start(){
         destination = home;
     }
-    
+
 
     void FixedUpdate(){
+        if(attachedSpriteList[0].sortingLayerName != "Default"){
+            if(destination == entry && Vector2.Distance(transform.position, entry.position) < 3f){
+                destination = home;
+                foreach(SpriteRenderer spriteRenderer in attachedSpriteList){
+                    spriteRenderer.sortingLayerName = "Default";
+                }
+            }
+        }
+        else{
+            if(destination == entry && Vector2.Distance(transform.position, entry.position) < 20f){
+                destination = assignedDestination;
+                foreach(SpriteRenderer spriteRenderer in attachedSpriteList){
+                    spriteRenderer.sortingLayerName = "Above";
+                }
+                piece.GetComponent<SpriteRenderer>().sortingLayerName = "Above";
+                piece.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Above";
+            }
+        }
         direction = this.transform.position - destination.position;
         direction = direction.normalized;
         rotateAmount = Vector3.Cross(direction, transform.up).z;
         unitRB.angularVelocity = rotateAmount * rotateSpeed;
         distance = Vector2.Distance(transform.position, destination.position);
-        if(destination != home && distance < 30f){
+        if(destination != home && destination != entry && distance < 30f){
             //Debug.Log("Test1");
             if(angle == 0){
-                angle = Vector3.Angle(this.transform.position - destination.position, destination.up);
+                angle = (transform.eulerAngles.z - 90) / 180 * Mathf.PI;
                 unitRB.velocity = Vector2.zero;
-                Debug.Log(angle);
+                //Debug.Log(angle);
             }
             
             if(transform.rotation.z < destination.rotation.z + 0.1f && transform.rotation.z > destination.rotation.z - 0.1f){
@@ -54,7 +76,7 @@ public class ConstructionShip : MonoBehaviour
                 if(Vector3.Distance(anchorPoint.position, destination.position) < 3f){
                 //Debug.Log("Test4");
                     atDestination = true;
-                    if(destination != home){
+                    if(destination != home && destination != entry){
                         this.PlacePiece();
                         angle = 0;
                     }
@@ -69,10 +91,17 @@ public class ConstructionShip : MonoBehaviour
                 RotateAround(35f);
             }
         }
-        else if(distance < moveSpeed + 10f){
+        else if(distance < moveSpeed + 30f){
             //Debug.Log("Test2");
-            unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime; 
-            unitRB.velocity = Vector2.ClampMagnitude(unitRB.velocity, ((moveSpeed / (distance + moveSpeed) + distance - 1)));
+            if(carrying){
+                unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime; 
+                unitRB.velocity = Vector2.ClampMagnitude(unitRB.velocity, ((moveSpeed / (30 + moveSpeed) + distance - 15)));
+            }
+            else{
+                unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime; 
+                unitRB.velocity = Vector2.ClampMagnitude(unitRB.velocity, ((moveSpeed / (30 + moveSpeed) + distance - 1)));
+            }
+            
         }
         else{
             //Debug.Log("Test3");
@@ -87,6 +116,9 @@ public class ConstructionShip : MonoBehaviour
         anchorPoint.position = transform.position + (transform.up * (this.piece.GetComponent<Collider2D>().bounds.extents.y + this.shipCollider.bounds.extents.y));
         carrying = true;
         this.building = building_; 
+        destination = entry;
+        transform.position = home.position;
+        transform.rotation = home.rotation;
         //collider.ClosestPoint(this.transform.position);
     }
 
@@ -96,8 +128,12 @@ public class ConstructionShip : MonoBehaviour
         piece.transform.position = destination.position;
         piece.transform.rotation = destination.rotation;
         piece.transform.parent = destination;
-        destination = home;
+        destination = entry;
+        assignedDestination = null;
         building.PlacePart();
+        foreach(SpriteRenderer spriteRenderer in attachedSpriteList){
+            spriteRenderer.sortingLayerName = "Above";
+        }
         //Call a method on the structure to update health and eventually enable the structure
     }
 

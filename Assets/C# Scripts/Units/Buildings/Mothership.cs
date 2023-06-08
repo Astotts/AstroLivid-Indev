@@ -8,13 +8,16 @@ public class Mothership : UnitIdentifyer
     private List<GameObject> piecesList;
     private List<Transform> positionList;
     private List<BuildOrder> buildQueue;
+    private List<BuildOrder> weldQueue;
     [SerializeField] private List<ConstructionShip> constructionShips;
+    [SerializeField] private List<WeldingShip> weldingShips;
     
     
     // Start is called before the first frame update
     void Start()
     {
         buildQueue = new List<BuildOrder>();
+        weldQueue = new List<BuildOrder>();
         positionList = new List<Transform>();
         piecesList = new List<GameObject>();
     }
@@ -54,7 +57,7 @@ public class Mothership : UnitIdentifyer
                     }
                     if(!constructionShip.carrying && piecesList.Count > 0){
                         constructionShip.SetPiece(piecesList[0], buildQueue[0].building);
-                        constructionShip.destination = positionList[0];
+                        constructionShip.assignedDestination = positionList[0];
                         //Debug.Log(constructionShip.destination);
                         positionList.RemoveAt(0);
                         piecesList.RemoveAt(0);
@@ -88,7 +91,40 @@ public class Mothership : UnitIdentifyer
             }
         }
         if(buildQueue.Count > 0 && piecesList.Count == 0){
+            weldQueue.Add(buildQueue[0]);
             buildQueue.RemoveAt(0);
+        }
+
+        foreach(WeldingShip weldingShip in weldingShips){
+            //if building is canceled update buildorder with remaining pieces and remove buildorder (make sure ships currently building finish their state)
+            switch (weldingShip.constructionState)
+            {
+                case ConstructionStates.Available:
+                    //Debug.Log("Available");
+                    if(weldQueue.Count > 0 && weldingShip.home == weldingShip.destination && weldQueue[0].building.built == true){
+                        weldingShip.building = weldQueue[0].building;
+                        weldingShip.assignedDestination = weldQueue[0].building.transform;
+                        weldingShip.constructionState = ConstructionStates.Building;
+                        weldingShip.SetWeld();
+                        break;
+                    }
+                break;
+
+                case ConstructionStates.Done:
+                    //Debug.Log("Done");
+                    weldingShip.constructionState = ConstructionStates.Returning;
+                    weldQueue.RemoveAt(0);
+                break;
+
+                case ConstructionStates.Returning:
+                    //Debug.Log("Returning");
+                    if(Vector2.Distance(weldingShip.transform.position, weldingShip.home.position) < 5f){
+                        weldingShip.constructionState = ConstructionStates.Available;
+                        break;
+                    }
+                break;
+
+            }
         }
     }
 

@@ -93,8 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitImage:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1993477738, guid: 89b1cdc1a4747034caeebb7cda3c2c2a, type: 3}
+  - {fileID: 21300000, guid: 2ea50576fc652c74787d6e19c9ce241e, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
