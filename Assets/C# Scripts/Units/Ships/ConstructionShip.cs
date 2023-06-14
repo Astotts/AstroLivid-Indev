@@ -54,7 +54,10 @@ public class ConstructionShip : MonoBehaviour
                     spriteRenderer.sortingLayerName = "Above";
                 }
                 piece.GetComponent<SpriteRenderer>().sortingLayerName = "Above";
-                piece.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Above";
+                if(piece.transform.childCount > 0){
+                    piece.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Above";
+                }
+                
             }
         }
         direction = this.transform.position - destination.position;

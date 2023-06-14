@@ -64,7 +64,9 @@ public class BuildingIdentifyer : UnitIdentifyer
             built = true;
             for(int i = partCount - 1; i >= 0; i--){
                 piecesAnchor.transform.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-                piecesAnchor.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                if(piecesAnchor.transform.GetChild(i).GetChild(0).childCount > 0){
+                    piecesAnchor.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                }
             }
         }
     }

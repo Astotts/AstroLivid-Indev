@@ -80,7 +80,8 @@ public class ShipSelector : MonoBehaviour {
                 }
             }
 
-            for(ushort x = 0; x < 8; x++){
+
+            for(ushort x = 8; x < 9; x++){
                 if(selectedUnitSet.Contains((UnitVariant)x) && unitIdentifyerList.Count > 0){
                     for(int y = unitIdentifyerList.Count - 1; y >= 0; y--){
                         if((int)unitIdentifyerList[y].variant < 8){
@@ -92,6 +93,9 @@ public class ShipSelector : MonoBehaviour {
                         }
                     }        
                     break;
+                }
+                else if(x == 7){
+                    Debug.Log(unitIdentifyerList[0].variant);
                 }
             }
             selectedUnitList = unitIdentifyerList;

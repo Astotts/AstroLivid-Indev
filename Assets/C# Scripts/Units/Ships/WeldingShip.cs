@@ -17,7 +17,6 @@ public class WeldingShip : MonoBehaviour
 
     public ConstructionStates constructionState;
 
-    private bool atDestination = true;
     public Transform assignedDestination;
     public Transform destination;
     public BuildingIdentifyer building;
@@ -96,7 +95,7 @@ public class WeldingShip : MonoBehaviour
         else if(distance < moveSpeed + 30f){
             //Debug.Log("Test2");
             if(destination != home && destination != entry){
-                //unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime; 
+                unitRB.velocity += (Vector2)transform.up * moveSpeed * Time.deltaTime; 
                 unitRB.velocity = Vector2.ClampMagnitude(unitRB.velocity, ((moveSpeed / (30 + moveSpeed) + distance - 20)));
             }
             else{
