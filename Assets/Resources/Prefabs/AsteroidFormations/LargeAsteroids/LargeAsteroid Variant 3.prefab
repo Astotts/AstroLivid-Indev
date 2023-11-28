@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2488808168430138225, guid: a69e65a7d79b11a4ab9b2616960d86ba, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: 587505439
+      value: 814371239
       objectReference: {fileID: 0}
     - target: {fileID: 4937760850048975246, guid: a69e65a7d79b11a4ab9b2616960d86ba, type: 3}
       propertyPath: m_FlipX

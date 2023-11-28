@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class PlayerCursorInterface : MonoBehaviour
 {
-
+    //Temporary
+    [SerializeField] ResourceHandler handler;
+    private int[] prices = {100, 1500};
+    private int[] incomes = {2, 25};
+    //Spawning Variables
+    private Quaternion spawnRot = new Quaternion(0f,0f,0f,0f);
+    [SerializeField] private Transform spawnPos;
+    [SerializeField] private GameObject[] ships; 
     //Build UI
     [Header("Build UI")]
     private Vector3 mousePos;
@@ -68,9 +75,12 @@ public class PlayerCursorInterface : MonoBehaviour
     }
 
     public void SelectBuilding(int buildIndex_){
-        buildIndex = buildIndex_;
-        buildOutline.SetActive(true);
-        spriteRenderer.sprite = buildingList[buildIndex].GetComponent<SpriteRenderer>().sprite;
+        if(handler.Purchase(prices[buildIndex_], incomes[buildIndex_])){
+            Instantiate(ships[buildIndex_], spawnPos.position, spawnRot);
+        }
+        
+        //buildOutline.SetActive(true);
+        //spriteRenderer.sprite = buildingList[buildIndex].GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame

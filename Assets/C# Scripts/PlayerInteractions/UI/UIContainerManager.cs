@@ -12,12 +12,14 @@ public class UIContainerManager : MonoBehaviour
     }
     
     public void SetUpContainer(UnitVariant variant_){
+        return;
         inactiveContainerList[0].SetUpContainer(variant_);
         activeContainerList.Add(inactiveContainerList[0]);
         inactiveContainerList.Remove(inactiveContainerList[0]);
     }
 
     public void ClearAll(){
+        return;
         for(int i = 0; i < activeContainerList.Count; i++){
             activeContainerList[i].ClearContainer();
             inactiveContainerList.Add(activeContainerList[i]);
@@ -26,6 +28,7 @@ public class UIContainerManager : MonoBehaviour
     }
 
     public void ClearAllBuildings(){
+        return;
         for(int i = 0; i < activeContainerList.Count; i++){
             if((int)activeContainerList[i].variant < 8){
                 Clear(activeContainerList[i]);
@@ -35,13 +38,14 @@ public class UIContainerManager : MonoBehaviour
     }
 
     private void Clear(UnitUIContainer container){
+        return;
         container.ClearContainer();
         inactiveContainerList.Add(container);
         activeContainerList.Remove(container);
     }
 
     public void AddUnitsToList(List<UnitIdentifyer> clonedList){
-
+        return;
         
         ClearAll();
         

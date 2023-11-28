@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private GameObject explosionEffect;
+    //[SerializeField] private GameObject explosionEffect;
     public float maxHealth;
     public float health;
 
@@ -38,7 +38,7 @@ public class HealthManager : MonoBehaviour
     public void LowerHealth(float damage){
         health -= damage;
         if(health <= damage){
-            Instantiate(explosionEffect, transform.position, transform.rotation);
+            //Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         healthGUIManager.UpdateHealth(health, maxHealth);

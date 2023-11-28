@@ -61,7 +61,7 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.35
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 0.35
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.35
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 0.35
@@ -414,7 +414,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3293920488203154395
@@ -671,7 +671,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4255382600270539098
@@ -866,7 +866,7 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.35
   m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 0.35
@@ -1150,6 +1150,7 @@ GameObject:
   - component: {fileID: 7226904832408448304}
   - component: {fileID: 3412486063810777139}
   - component: {fileID: 1782506937623450276}
+  - component: {fileID: 7247013272799574712}
   m_Layer: 13
   m_Name: ArtilleryFighterRed
   m_TagString: TeamTwo
@@ -1241,14 +1242,15 @@ MonoBehaviour:
   selectedGameObject: {fileID: 8635028208757126294}
   selectedHealthObject: {fileID: 3293920488203154395}
   unitRB: {fileID: 7226904832408448307}
+  healthManager: {fileID: 0}
+  selected: 0
+  variant: 0
+  destination: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   defaultMoveSpeed: 30
   colliderAttack: {fileID: 0}
-  selected: 0
   built: 0
   direction: {x: 0, y: 0}
-  destination: {x: 0, y: 0, z: 0}
-  variant: 0
 --- !u!114 &3412486063810777139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,10 +1286,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a174f58cb2eb3478bc65204b115c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 6202712380974417482, guid: ffa29ffdff327684da836b22781319b2, type: 3}
-  maxHealth: 35
-  health: 35
+  maxHealth: 40
+  health: 40
   healthGUIManager: {fileID: 3028943485959721265}
+--- !u!114 &7247013272799574712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226904832408448309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833630ba7d2d74f4ab3aea8661408caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 7226904832408448304}
 --- !u!1 &8635028208757126294
 GameObject:
   m_ObjectHideFlags: 0

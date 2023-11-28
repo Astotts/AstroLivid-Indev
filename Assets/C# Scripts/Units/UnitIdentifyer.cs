@@ -23,7 +23,7 @@ public class UnitIdentifyer : MonoBehaviour
     public void MoveTo(Vector2 pos){
         destination = pos;
         atDestination = false;
-        Debug.Log(destination);
+        //Debug.Log(destination);
     }
 
     //Methods below are nessesary for specific cases

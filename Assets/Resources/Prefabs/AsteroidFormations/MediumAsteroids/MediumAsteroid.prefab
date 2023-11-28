@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 3966107091226802128}
   - component: {fileID: 3114245189384509331}
   - component: {fileID: 4515315602214846737}
-  - component: {fileID: 6462417689317304383}
   - component: {fileID: 831668091862895890}
-  - component: {fileID: 740602059337228821}
   - component: {fileID: 5563198969450194284}
   - component: {fileID: 2740541557304407427}
   m_Layer: 8
@@ -33,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -45.87382, y: -31.64706, z: 0}
   m_LocalScale: {x: 9, y: 9, z: 19}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,6 +47,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -103,29 +103,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 0}
   maxHealth: 0
   health: 0
---- !u!114 &6462417689317304383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946408486732622128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccdcce7e2050b084a9a1d9e6ff138ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miningFighterHealth: 35
-  artilleryFighterHealth: 15
-  lightMissileHealth: 2
-  lightArtilleryHealth: 5
-  flakBuildingHealth: 50
-  miningBuildingHealth: 110
-  harvesterBuildingHealth: 110
-  populationBuildingHealth: 125
-  shipFactoryHealth: 115
-  powerBuildingHealth: 75
-  asteroids: 50
+  healthGUIManager: {fileID: 0}
 --- !u!50 &831668091862895890
 Rigidbody2D:
   serializedVersion: 4
@@ -147,25 +125,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &740602059337228821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946408486732622128}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de98e968e3821de4d99f1030d44c68b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridController: {fileID: 5710139076974033521, guid: 24a792b20ed625e41812bc303ac80d8b, type: 3}
-  grabbed: 0
-  selected: 0
-  defaultMoveSpeed: 10
-  moveSpeed: 0
-  player: {fileID: 302011417342872666, guid: bfaf3da4bf51a9540a1ad73102dda0e3, type: 3}
-  teamHandler: {fileID: 8958728729488600729, guid: 9112dc8c4dca28f409f82eb139599a63, type: 3}
 --- !u!114 &5563198969450194284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,11 +138,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
+  m_ComponentVersion: 1
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: a7518a30
   m_ShapePath:
   - {x: -0.53643936, y: -0.0014261137, z: 0}
   - {x: -0.61754364, y: -0.20384985, z: 0}

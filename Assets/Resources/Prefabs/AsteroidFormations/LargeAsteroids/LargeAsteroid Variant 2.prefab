@@ -360,8 +360,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6512965265431998354, guid: 353aa44bc1849b640b74682a7a850a1d, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[0]
+      value: 814371239
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512965265431998354, guid: 353aa44bc1849b640b74682a7a850a1d, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: 587505439
+      value: 814371239
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

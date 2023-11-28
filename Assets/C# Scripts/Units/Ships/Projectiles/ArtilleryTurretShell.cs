@@ -5,10 +5,10 @@ using UnityEngine;
 public class ArtilleryTurretShell : MonoBehaviour
 {
     [SerializeField] private GameObject explosionEffect;
-    private float artilleryTime = 2f;
+    private float artilleryTime = 3f;
     private float currentArtilleryTime;
 
-    private float speed = 70f;
+    private float speed = 75f;
 
     private List<Collider2D> colliderArray;
     public LayerMask layermask;

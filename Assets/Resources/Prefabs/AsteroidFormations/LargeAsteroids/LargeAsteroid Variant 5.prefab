@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102559136168159018, guid: f58f9f7734ca3a548b6cf91562626697, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: 587505439
+      value: 814371239
       objectReference: {fileID: 0}
     - target: {fileID: 4868661976467034105, guid: f58f9f7734ca3a548b6cf91562626697, type: 3}
       propertyPath: m_Enabled

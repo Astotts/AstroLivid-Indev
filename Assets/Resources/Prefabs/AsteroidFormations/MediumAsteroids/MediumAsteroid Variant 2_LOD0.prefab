@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_ShapePath.Array.data[17].y
       value: 0.08198204
       objectReference: {fileID: 0}
+    - target: {fileID: 3301549159677610728, guid: 6c26c34c6b83e834ea4c2173931bc48b, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301549159677610728, guid: 6c26c34c6b83e834ea4c2173931bc48b, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[0]
+      value: 814371239
+      objectReference: {fileID: 0}
     - target: {fileID: 5110840716131834375, guid: 6c26c34c6b83e834ea4c2173931bc48b, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
       value: 0.6144034

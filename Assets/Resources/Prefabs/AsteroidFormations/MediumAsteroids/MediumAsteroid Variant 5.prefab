@@ -255,6 +255,14 @@ PrefabInstance:
       propertyPath: m_ShapePath.Array.data[28].y
       value: 0.1508244
       objectReference: {fileID: 0}
+    - target: {fileID: 902086571047182560, guid: 75b11f0276ff18047808049ce6d14d40, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 902086571047182560, guid: 75b11f0276ff18047808049ce6d14d40, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[0]
+      value: 814371239
+      objectReference: {fileID: 0}
     - target: {fileID: 5348592665737611422, guid: 75b11f0276ff18047808049ce6d14d40, type: 3}
       propertyPath: m_LinearDrag
       value: 10
