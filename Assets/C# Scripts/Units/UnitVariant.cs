@@ -11,7 +11,12 @@ public enum UnitVariant : ushort{
 
     //Units 8-100
     ArtilleryFighter = 8,
-    MiningFighter = 9,
+    ArtilleryCorvette = 9,
+    ArtilleryFrigate = 10,
+    ArtilleryDestroyer = 11,
+    ArtilleryCapitalShip = 12,
+    ArtilleryColonyship = 13,
+    MiningFighter = 14,
     
     None = ushort.MaxValue
 }

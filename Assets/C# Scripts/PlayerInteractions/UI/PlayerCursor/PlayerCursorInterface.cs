@@ -6,8 +6,8 @@ public class PlayerCursorInterface : MonoBehaviour
 {
     //Temporary
     [SerializeField] ResourceHandler handler;
-    private int[] prices = {100, 1500};
-    private int[] incomes = {2, 25};
+    private int[] prices = {100, 500, 1500};
+    private int[] incomes = {2, 9, 25};
     //Spawning Variables
     private Quaternion spawnRot = new Quaternion(0f,0f,0f,0f);
     [SerializeField] private Transform spawnPos;

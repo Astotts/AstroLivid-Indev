@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        destination = new Vector3(600f,Random.Range(100f,430f),0f);
+        destination = new Vector3(773f,Random.Range(150f,330f),0f);
         ship.MoveTo(destination);
     }
 }
